@@ -1,0 +1,144 @@
+<div class="row">
+    <div class="col-md-6">
+        <a href="" class="btn btn-link">
+            <i class="fa fa-arrow-circle-o-left">Back To Dashboard</i>
+        </a>
+    </div>
+
+
+    <div class="col-md-6">
+
+    </div>
+
+</div>
+
+
+<div class="card">
+    <div class="card-header">
+        Add book
+    </div>
+
+    <div class="card-body">
+        <form #bookForm="ngForm" (ngSubmit)="onSubmit(bookForm)">
+            <div class="form-group">
+                <label for="title"> Title</label>
+                <input type="text"
+                        class="form-control"
+                        name="title"
+                        #bookTitle="ngModel"
+                        [ngClass]="{'is-invalid': bookTitle.errors && bookTitle.touched}"
+                        [(ngModel)]="book.title"
+                        minlength="4"
+                        required>
+
+                <div [hidden]="!bookTitle.errors?.required" class="invalid-feedback">
+                    Title Required
+                </div>
+                <div [hidden]="!bookTitle.errors?.minlength" class="invalid-feedback">
+                    Must Be at Least 4 characters
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label for="author"> Author</label>
+                <input type="text"
+                        class="form-control"
+                        name="author"
+                        #bookAuthor="ngModel"
+
+                        [ngClass]="{'is-invalid': bookAuthor.errors && bookAuthor.touched}"
+                        [(ngModel)]="book.author"
+                        minlength="2"
+                        required>
+
+                <div [hidden]="!bookAuthor.errors?.required" class="invalid-feedback">
+                    Author Required
+                </div>
+
+
+                <div [hidden]="!bookAuthor.errors?.minlength" class="invalid-feedback">
+                    Must Be at Least 2 characters
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="description"> Description</label>
+                <textarea
+                        class="form-control"
+                        name="description"
+                        #bookDescription="ngModel"
+                        rows="3"
+                        [(ngModel)]="book.description">
+                    </textarea>
+            </div>
+
+
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file"
+                        class="form-control"
+                        name="image"
+                        #bookImage="ngModel"
+                        accept=".png,.jpg"
+                        [(ngModel)]="book.image"
+                        required>
+
+                        <div [hidden]="!bookImage.errors?.required" class="invalid-feedback">
+                            Image Required
+                        </div>
+                        <!-- <div class="progress">
+                            <div class="progress-bar progress-bar-striped bg-success"
+                             role="progressbar"
+                              [style.width]="(uploadProgress | async) + '%'"
+                               [attr.aria-valuenow]="(uploadProgress | async)"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div> -->
+<!-- 
+                        <div class="btn-group" role="group" *ngIf="uploadState | async; let state">
+                            <button type="button" class="btn btn-primary" (click)="task.pause()" [disabled]="state === 'paused'">Pause</button>
+                            <button type="button" class="btn btn-primary" (click)="task.cancel()" [disabled]="!(state === 'paused' || state === 'running')">Cancel</button>
+                            <button type="button" class="btn btn-primary" (click)="task.resume()" [disabled]="state === 'running'">Resume</button>
+                        </div> -->
+
+                        
+                        <!-- <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
+                            File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
+                        </div> -->
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+              
+
+            <div class="form-group">
+                    <label for="price"> Price</label>
+                    <input type="number"
+                            class="form-control"
+                            name="price"
+                            #bookPrice="ngModel"
+                            [(ngModel)]="book.Price"
+                            [disabled]="disablePriceOnAdd">
+
+                </div>
+
+
+
+    <input type="submit" value="Submit" class="btn btn-primary btn-block">
+        </form>
+    </div>
+</div>
