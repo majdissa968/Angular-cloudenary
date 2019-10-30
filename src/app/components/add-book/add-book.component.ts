@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Book } from 'src/app/models/Book';
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -19,7 +20,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-book.component.scss']
 })
 export class AddBookComponent implements OnInit {
-  
+  selectedFie = null;
   // ref: AngularFireStorageReference;
   // task: AngularFireUploadTask;
   // uploadProgress: Observable<number>;
@@ -38,6 +39,7 @@ export class AddBookComponent implements OnInit {
 
   @ViewChild('bookForm', { static: false }) form: any
   constructor(
+    private http:HttpClient,
     private flashMessages: FlashMessagesService,
     private bookService: BookService,
     private router: Router,
